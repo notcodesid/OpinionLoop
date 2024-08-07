@@ -18,3 +18,7 @@ export const validSchema = z.object({
 export const MsgSchema = z.object({
     content : z.string().min(10 , "Content must be atleast 10 character").min(200 , "Content must be no longer than 200 characters ")
 })
+
+export const accpectMsgSchema = z.object({
+    accpectMessages : z.boolean()
+})
