@@ -1,4 +1,4 @@
-import QuestionSec from "./pages/Qsn";
+import QuestionSec from "../components/Qsn";
 
 
 export default function Home() {

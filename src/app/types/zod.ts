@@ -1,8 +1,7 @@
-import z from "zod"
+import { z } from 'zod';
 
 const QsnSchema = z.object({
-    Question: z.string().min(2 , "Question atleast contains 2 words")
-  });
+  qsn: z.string(),
+});
 
-  export default QsnSchema;
-  
+export default QsnSchema;

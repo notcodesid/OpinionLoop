@@ -1,8 +1,7 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
-const schema = new mongoose.Schema({ 
-    content: String 
+const QsnSchema = new mongoose.Schema({
+  qsn: { type: String, required: true },
 });
-const QsnModel = mongoose.model('QsnModel', schema);
 
-export default QsnModel;
+export default mongoose.models.Qsn || mongoose.model('Qsn', QsnSchema);
