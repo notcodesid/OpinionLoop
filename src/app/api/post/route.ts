@@ -5,9 +5,18 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function GET() {
     await dbConnect();
-    return Response.json({ 
-        message : "The route is working perfectly fine"
-     })
+    try {
+        const allQsn = await QsnModel.find({}); 
+        return NextResponse.json({
+          message: "The route is working perfectly fine",
+          data: allQsn
+        });
+      } catch (error) {
+        console.error("Error fetching data:", error);
+        return NextResponse.json({
+          message: "There was an error processing your request"
+        }, { status: 500 });
+      }
   }
 
   export async function POST( req: NextRequest){
