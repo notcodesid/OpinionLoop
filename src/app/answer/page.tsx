@@ -1,6 +1,6 @@
 "use client";
 import { QsnCard } from "@/components/qsnCard";
-import { useqnsFromDB } from "../hooks";
+import { useQnsFromDB } from "../hooks";
 
 export default function Answer() {
   const { loading, post } = useQnsFromDB();
