@@ -6,7 +6,7 @@ interface qsnProps{
 }
 
 
-export function Page() {
+export default function Page() {
   const { loading, post } = useQnsFromDB();
 
   if (loading) {
@@ -42,7 +42,7 @@ export function Page() {
   );
 }
 
-export default function QsnCard({qsn} : qsnProps) {
+export function QsnCard({qsn} : qsnProps) {
   return (
       <div className="relative overflow-hidden transition-transform duration-300 ease-in-out rounded-lg shadow-lg group hover:shadow-xl hover:-translate-y-2">
       <div className="p-4 bg-background">
