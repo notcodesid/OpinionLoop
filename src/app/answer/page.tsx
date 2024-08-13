@@ -6,7 +6,7 @@ interface qsnProps{
 }
 
 
-export function Answer() {
+export function page() {
   const { loading, post } = useQnsFromDB();
 
   if (loading) {
