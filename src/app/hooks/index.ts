@@ -5,7 +5,7 @@ interface Post{
     qsn : string;
 }
 
-export const qnsFromDB = () => {
+export const useqnsFromDB = () => {
     const [loading , setLoading] = useState(true);
     const [post , setPost] = useState<Post[]>([]);
 

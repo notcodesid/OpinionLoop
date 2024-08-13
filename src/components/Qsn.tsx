@@ -30,7 +30,7 @@ export default function QuestionSec() {
           <div className="max-w-3xl mx-auto space-y-4">
             <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">Ask Me Anything</h1>
             <p className="text-muted-foreground md:text-xl">
-              Have a question? Submit it below and I'll do my best to provide a helpful answer.
+              Have a question? Submit it below and I&apos;ll do my best to provide a helpful answer.
             </p>
             <form className="w-full max-w-md mx-auto space-y-4">
               <div className="space-y-2">
