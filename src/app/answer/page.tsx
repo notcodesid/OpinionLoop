@@ -3,7 +3,7 @@ import { QsnCard } from "@/components/qsnCard";
 import { useqnsFromDB } from "../hooks";
 
 export default function Answer() {
-  const { loading, post } = useqnsFromDB();
+  const { loading, post } = useQnsFromDB();
 
   if (loading) {
     return (
