@@ -15,8 +15,7 @@ export default function QuestionSec() {
   async function sendQsn(){
     try {
       setLoading(true);
-      const response = await axios.post(`http://localhost:3000/api/post`, input);
-      console.log(response.data);
+      const response = await axios.post(`${process.env.NEXT_PUBLIC_BASE_URL}/api/post`, input);
     } catch (error) {
       console.error('Error posting question:', error);
     }

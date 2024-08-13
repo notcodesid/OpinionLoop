@@ -10,7 +10,7 @@ export const qnsFromDB = () => {
     const [post , setPost] = useState<Post[]>([]);
 
     useEffect(()=>{
-        axios.get(`http://localhost:3000/api/post`)
+        axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/api/post`)
         .then(response => {
             const questions = response.data.data.map((item: { qsn: string }) => ({ qsn: item.qsn }));
             setPost(questions);
