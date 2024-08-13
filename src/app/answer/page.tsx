@@ -1,5 +1,5 @@
 "use client";
-import { QsnCard } from "@/components/qsnCard";
+import  QsnCard  from "../.././components/qsnCard";
 import { useQnsFromDB } from "../hooks";
 
 export default function Answer() {
