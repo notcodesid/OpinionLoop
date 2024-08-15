@@ -6,7 +6,7 @@ import { corsMiddleware } from "@/lib/corsMiddleware";
 
 
 export async function GET( req : NextRequest, res: NextResponse ) {
-  const response = corsMiddleware(req , res);
+  const response = await corsMiddleware(req , res);
 
     await dbConnect();
     try {
@@ -24,7 +24,7 @@ export async function GET( req : NextRequest, res: NextResponse ) {
   }
 
   export async function POST( req : NextRequest, res: NextResponse){
-  const response = corsMiddleware(req , res);
+  const response = await corsMiddleware(req , res);
     await dbConnect();
 
   try {
