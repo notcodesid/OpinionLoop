@@ -46,7 +46,7 @@ export default function QuestionSec() {
                   })
                 }} id="question" placeholder="Enter your question" className="min-h-[100px]" />
               </div>
-              <Button onClick={sendQsn} type="sumbit" className="w-full"  disabled={loading}>
+              <Button onClick={sendQsn} type="submit" className="w-full"  disabled={loading}>
                 {loading ? 'Laoding' : 'Sumbit'}
               </Button>
               </form>
