@@ -2,11 +2,8 @@ import QsnModel from "@/app/model/post";
 import QsnSchema from "@/app/types/zod";
 import dbConnect from "@/lib/db";
 import { NextRequest, NextResponse } from "next/server";
-import { corsMiddleware } from "@/lib/corsMiddleware";
-
 
 export async function GET( req : NextRequest, res: NextResponse ) {
-  const response = await corsMiddleware(req , res);
 
     await dbConnect();
     try {
@@ -24,7 +21,6 @@ export async function GET( req : NextRequest, res: NextResponse ) {
   }
 
   export async function POST( req : NextRequest, res: NextResponse){
-  const response = await corsMiddleware(req , res);
     await dbConnect();
 
   try {
