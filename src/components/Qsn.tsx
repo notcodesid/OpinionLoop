@@ -6,6 +6,7 @@ import { useState } from "react"
 import axios from "axios"
 
 
+
 export default function QuestionSec() {
   const [loading, setLoading] = useState(false);
   const [input , setInput] = useState({
@@ -17,7 +18,9 @@ export default function QuestionSec() {
       setLoading(true);
       const response = await axios.post(`${process.env.NEXT_PUBLIC_BASE_URL}api/post`, input);
       console.log(response)
+      alert("Your question has been submitted. I appreciate your inquiry :)")
     } catch (error) {
+      alert("Unable to send your question due to a backend error. Please try again later.")
       console.error('Error posting question:', error);
     }
     finally {
@@ -46,7 +49,7 @@ export default function QuestionSec() {
               <Button onClick={sendQsn} type="submit" className="w-full"  disabled={loading}>
                 {loading ? 'Laoding' : 'Sumbit'}
               </Button>
-            </form>
+              </form>
           </div>
         </div>
       </section>
