@@ -4,29 +4,34 @@ import { Textarea } from "@/components/ui/textarea"
 import { Button } from "@/components/ui/button"
 import { useState } from "react"
 import axios from "axios"
+import { useToast } from "@/components/ui/use-toast"
+import { ToastAction } from "@/components/ui/toast"
+
 
 
 
 export default function QuestionSec() {
+
+  const { toast } = useToast()
+
   const [loading, setLoading] = useState(false);
-  const [input , setInput] = useState({
-    qsn : ""
+  const [input, setInput] = useState({
+    qsn: ""
   })
 
-  async function sendQsn(){
+  async function sendQsn() {
     try {
       setLoading(true);
       const response = await axios.post(`${process.env.NEXT_PUBLIC_BASE_URL}api/post`, input);
-      console.log(response)
-      alert("Your question has been submitted. I appreciate your inquiry :)")
+      return true; // Indicating success
     } catch (error) {
-      alert("Unable to send your question due to a backend error. Please try again later.")
       console.error('Error posting question:', error);
-    }
-    finally {
-      setLoading(false); // Stop the loader
+      return false; // Indicating failure
+    } finally {
+      setLoading(false);
     }
   }
+
   return (
     <div className="w-full">
       <section className="w-full h-screen py-12 md:py-24 lg:py-32 bg-muted">
@@ -42,14 +47,40 @@ export default function QuestionSec() {
                 <Textarea onChange={(e) => {
                   setInput({
                     ...input,
-                    qsn:e.target.value
+                    qsn: e.target.value
                   })
                 }} id="question" placeholder="Enter your question" className="min-h-[100px]" />
               </div>
-              <Button onClick={sendQsn} type="submit" className="w-full"  disabled={loading}>
-                {loading ? 'Laoding' : 'Sumbit'}
+
+
+
+              <Button
+                className="w-full"
+                type="submit"
+                disabled={loading}
+                variant="outline"
+                onClick={async () => {
+                  const success = await sendQsn();
+                  if (success) {
+                    toast({
+                      description: "Your question has been submitted. I appreciate your inquiry.",
+                    });
+                  } else {
+                    toast({
+                      variant: "destructive",
+                      title: "Uh oh! Something went wrong.",
+                      description: "There was a problem with your request.",
+                      action: <ToastAction altText="Try again">Try again</ToastAction>,
+                    });
+                  }
+                }}
+              >
+                {loading ? 'Loading' : 'Submit'}
               </Button>
-              </form>
+
+
+
+            </form>
           </div>
         </div>
       </section>
