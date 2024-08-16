@@ -55,7 +55,7 @@ export default function QuestionSec() {
 
 
               <Button
-                className="w-full"
+                className="w-full bg-black text-white"
                 type="submit"
                 disabled={loading}
                 variant="outline"
