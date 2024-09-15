@@ -7,9 +7,6 @@ import axios from "axios"
 import { useToast } from "@/components/ui/use-toast"
 import { ToastAction } from "@/components/ui/toast"
 
-
-
-
 export default function QuestionSec() {
 
   const { toast } = useToast()
@@ -24,10 +21,10 @@ export default function QuestionSec() {
       setLoading(true);
       const response = await axios.post(`${process.env.NEXT_PUBLIC_BASE_URL}api/post`, input);
       setInput({ qsn: "" });
-      return true; // Indicating success
+      return true; 
     } catch (error) {
       console.error('Error posting question:', error);
-      return false; // Indicating failure
+      return false;
     } finally {
       setLoading(false);
     }
@@ -45,22 +42,27 @@ export default function QuestionSec() {
             <form className="w-full max-w-md mx-auto space-y-4">
               <div className="space-y-2">
                 <Label htmlFor="question">Your Question</Label>
-                <Textarea onChange={(e) => {
-                  setInput({
-                    ...input,
-                    qsn: e.target.value
-                  })
-                }} id="question" placeholder="Enter your question" className="min-h-[100px]" />
+                <Textarea
+                  onChange={(e) => {
+                    setInput({
+                      ...input,
+                      qsn: e.target.value
+                    })
+                  }}
+                  id="question"
+                  value={input.qsn} // Bind the input value
+                  placeholder="Enter your question"
+                  className="min-h-[100px]"
+                />
               </div>
-
-
 
               <Button
                 className="w-full bg-black text-white"
                 type="submit"
                 disabled={loading}
                 variant="outline"
-                onClick={async () => {
+                onClick={async (e) => {
+                  e.preventDefault(); // Prevent form submission
                   const success = await sendQsn();
                   if (success) {
                     toast({
@@ -78,9 +80,6 @@ export default function QuestionSec() {
               >
                 {loading ? 'Loading' : 'Submit'}
               </Button>
-
-
-
             </form>
           </div>
         </div>
