@@ -23,6 +23,7 @@ export default function QuestionSec() {
     try {
       setLoading(true);
       const response = await axios.post(`${process.env.NEXT_PUBLIC_BASE_URL}api/post`, input);
+      setInput({ qsn: "" });
       return true; // Indicating success
     } catch (error) {
       console.error('Error posting question:', error);
